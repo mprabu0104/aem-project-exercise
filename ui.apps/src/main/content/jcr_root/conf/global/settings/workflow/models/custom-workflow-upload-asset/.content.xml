@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:designPath="/libs/settings/wcm/designs/default"
+        cq:lastModified="{Date}2020-03-19T14:17:04.010-04:00"
+        cq:lastModifiedBy="admin"
+        cq:template="/libs/cq/workflow/templates/model"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Custom Workflow Upload Asset"
+        sling:resourceType="cq/workflow/components/pages/model">
+        <flow
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="foundation/components/parsys">
+            <createthumbnailproce
+                jcr:created="{Date}2020-03-19T14:15:05.586-04:00"
+                jcr:createdBy="admin"
+                jcr:description="This process will create one or more thumbnails for the asset to be procesed."
+                jcr:lastModified="{Date}2020-03-19T14:15:47.961-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Create Thumbnail"
+                sling:resourceType="dam/components/workflow/createthumbnailprocess">
+                <metaData
+                    jcr:primaryType="nt:unstructured"
+                    CONFIGS="[100:100:false,48:48:false]"
+                    PROCESS="com.day.cq.dam.core.process.CreateThumbnailProcess"
+                    PROCESS_AUTO_ADVANCE="true"/>
+            </createthumbnailproce>
+            <createwebenabledimag
+                jcr:created="{Date}2020-03-19T14:16:02.158-04:00"
+                jcr:createdBy="admin"
+                jcr:description="A process to create a web enabled representation from an asset. Provides various configuration arguments."
+                jcr:lastModified="{Date}2020-03-19T14:16:45.394-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Create Web Enabled Image"
+                sling:resourceType="dam/components/workflow/createwebenabledimage">
+                <metaData
+                    jcr:primaryType="nt:unstructured"
+                    HEIGHT="750"
+                    MIME_TYPE="image/jpeg"
+                    PROCESS="com.day.cq.dam.core.process.CreateWebEnabledImageProcess"
+                    PROCESS_AUTO_ADVANCE="true"
+                    QUALITY="90"
+                    WIDTH="750"/>
+            </createwebenabledimag>
+            <damupdateassetworkfl
+                jcr:created="{Date}2020-03-19T14:16:56.190-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2020-03-19T14:17:04.005-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="DAM Update Asset Workflow Completed"
+                sling:resourceType="dam/components/workflow/damupdateassetworkflowcompletedprocess">
+                <metaData
+                    jcr:primaryType="nt:unstructured"
+                    PROCESS="com.day.cq.dam.core.impl.process.DamUpdateAssetWorkflowCompletedProcess"
+                    PROCESS_AUTO_ADVANCE="true"/>
+            </damupdateassetworkfl>
+        </flow>
+    </jcr:content>
+</jcr:root>
