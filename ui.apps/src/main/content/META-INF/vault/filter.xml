@@ -2,4 +2,6 @@
 <workspaceFilter version="1.0">
     <filter root="/apps/exercise"/>
     <filter root="/apps/msm/exercise_blueprint" mode="merge"/>
+    <filter root="/conf" mode="merge"/>
+    <filter root="/var" mode="merge"/>
 </workspaceFilter>
